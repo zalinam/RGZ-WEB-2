@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зенкова Алина. Расчетно-графическая работа по WEB-программированию, 2 часть</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <header>
+        Dating site
+    </header>
+
+    <main>
+        {% block main %} {% endblock %}
+    </main>
+
+    <footer>
+        &copy; Зенкова Алина, ФБИ-11, 3 курс, 2023
+    </footer>
+</body>
+</html>
