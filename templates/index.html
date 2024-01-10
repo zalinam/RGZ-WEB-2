@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <div class="menu_index">
+        <div class="links">
+            {% if current_user.is_authenticated %}
+            <div class="links">
+                <a class="profile_but">Вы вошли как: {{ current_user.username }}</a>
+                <a class="profile_but" href="{{ url_for('search') }}">Поиск партнёра</a>
+                <a href="{{ url_for('logout') }}" class="profile_but">Выйти</a>
+            </div>
+            {% else %}
+            <div class="links">
+                <a href="{{ url_for('login') }}" class="profile_but">Войти</a>
+                <a href="{{ url_for('register') }}" class="profile_but">Регистрация</a>
+            </div>
+            <div class="main_error">
+                Для продолжения необходима
+                <a style="text-decoration: none;" href="{{ url_for('login') }}">авторизация</a>
+            </div>
+            {% endif %}
+        </div>
+                <div class="main_quest">
+                <h2 style="text-align: center;">Добро пожаловать на Dating site!</h2>
+                Здесь вы сможете найти нового друга или любовь всей своей жизни.
+                Для просмотра анкет необходимо зарегистрироваться и создать собственную анкету. После этого можете приступать к поиску. 
+                <br>Желаем удачи!
+            </div>
+        <div class="glav_str"><h1>Главная страница</h1></div>
+        </div>
+    </div>
+</body>
+</html>

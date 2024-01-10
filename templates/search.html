@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title style="margin-top: 90px;">Поиск партнёра</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <div class="menu">
+        <div class="links">
+            <a class="profile_but">Вы вошли как: {{ current_user.username }}</a>
+            <a href="{{ url_for('index') }}" class="profile_but">Главное меню</a>
+            <a href="{{ url_for('logout') }}" class="profile_but">Выйти</a>
+        </div>
+
+        <div class="search_menu">
+            <a href="{{ url_for('edit') }}" class="profile_but">Редактировать анкету</a>
+            {% if hide.is_hidden == False %}
+                <a href="{{ url_for('hidden') }}" class="profile_but">Спрятать анкету</a>
+            {% else %}
+                <a href="{{ url_for('seek') }}" class="profile_but">Открыть анкету</a>
+            {% endif %}
+            <a href="{{ url_for('delete') }}" class="profile_but">Удалить аккаунт</a>
+        </div>
+
+        <div class="search">
+            <div class="search_partner"><h1>Поиск партнёра</h1></div>
+
+            <form method="POST" action="{{ url_for('search') }}" class="form_search">
+                <input type="text" name="query" placeholder="Поиск" class="text_search">
+                <input type="text" name="min_age" placeholder="Мин. возраст" class="text_pages">
+                <input type="text" name="max_age" placeholder="Макс. возраст" class="text_pages">        
+                <button type="submit" class="button_search">Искать</button>
+            </form>
+
+            {% if profiles %}
+                <ul class="profile_lent">
+                    {% for i in profiles %}
+                        <li class="profile">
+                            <p><img src="{{ i.photo }}" alt="{{ i.name }}" width="300" height="200"></p>
+                            <h2>{{ i.name }}</h2>
+                            <p>Возраст: {{ i.age }}</p>
+                            <p>{% if i.gender == "м" %}Пол: Мужской{% else %}Пол: Женский{% endif %}</p>
+                            <p>{{ i.about }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Профилей нет</p>
+            {% endif %}
+        </div>
+        <div class="pagination">
+            {% if page > 1 %}
+                <a href="{{ url_for('search', page=page-1) }}" class="link_left_s">Предыдущая страница</a>
+            {% endif %}
+        
+            {% if (page * per_page) < total_profiles %}
+                <a href="{{ url_for('search', page=page+1) }}" class="link_right_s">Следующая страница</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

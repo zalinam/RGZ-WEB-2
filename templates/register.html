@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Страница поиска</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <div class="auth_back">
+        <form method="post">
+            <h1 style="padding-top: 40px; padding-bottom: 15px;">Регистрация пользователя!</h1>
+
+            <input style="width: 170px;" class="text_log" type="text" name="username" placeholder="Логин">
+            <br>
+            <input style="width: 170px;" class="text_pas" type="password" name="password" placeholder="Пароль">
+            <br> 
+            <div>
+                {% for error in errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+
+       
+        <a href="{{ url_for('index') }}">Назад</a>
+    </div>
+</body>

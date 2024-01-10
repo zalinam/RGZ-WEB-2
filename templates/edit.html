@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактировать пользователей</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <div class="auth_back">
+        <h1 style="margin-bottom: 35px; margin-top: 40px;">Измени свою анкету!</h1>
+        <form method="POST" action="{{ url_for('edit') }}">
+            <input style="width: 250px; height: 20px; margin-bottom: 7px;" type="text" name="name" placeholder="Ваше имя"><br>
+            <input style="width: 250px; height: 20px; margin-bottom: 7px;" type="text" name="age" placeholder="Ваш возраст"><br>
+            <select name="gender" class="text_pages">
+                <option value="" disabled selected>Ваш пол</option>
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+            </select>
+            <select name="gender_search" class="text_pages">
+                <option value="" disabled selected>Пол партнёра</option>
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+            </select><br>
+            <input style="width: 250px; height: 20px; margin-bottom: 7px;" type="text" name="about" placeholder="Расскажите о себе"><br>
+            <input style="width: 250px; height: 20px; margin-bottom: 7px;" type="text" name="photo" placeholder="Ссылка на фото"><br>
+            <button type="submit">Добавить</button>
+        </form>
+
+        <a href="{{ url_for('search') }}" class="button">Назад</a>
+        <div class="edit_view">
+            {{ profile_info.name }}
+            {{ profile_info.age }}
+            {{ profile_info.gender }}
+            {{ profile_info.search_gender }}
+            {{ profile_info.about }}
+            {{ profile_info.photo }}
+        </div>
+        <div>
+            {% for error in errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Удалить книгу</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <div class="auth_back">
+        <h1 style="margin-top: 65px;">Удалить аккаунта</h1>
+        <p style="margin-top: 65px; margin-bottom: 50px;">Вы уверены, что хотите удалить аккаунт?</p>
+        <form method="POST" action="{{ url_for('delete') }}">
+            <button type="submit">Удалить</button>
+        </form>
+
+        <a href="{{ url_for('search') }}" class="button">Отмена</a>
+    </div>
+</body>
+</html>
